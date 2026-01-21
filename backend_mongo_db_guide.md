@@ -160,5 +160,5 @@ Set as **UNIQUE**.
 
 ---
 
-✅ This document is the single source of truth for backend–database interaction.
+
 

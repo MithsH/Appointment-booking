@@ -39,11 +39,11 @@ npm install mongoose dotenv
 
 Create a `.env` file (DO NOT COMMIT THIS FILE):
 
-pass\:JbjbOnfiBmU02IQb
+pass\:ur password
 
 
 
-mongodb+srv://admin:\<db\_password>@appointment-booking.yejltrj.mongodb.net/?appName=appointment-booking\
+mongodb+srv://username:\<db\_password>@appointment-booking.yejltrj.mongodb.net/?appName=appointment-booking\
 \
 don;t commit with pass 
 

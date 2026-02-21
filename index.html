@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookMe - Appointment Booking</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header id="navbar" class="navbar"></header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Book Appointments<br/>Effortlessly</h1>
+      <p>Connect with service providers and book appointments in seconds. Manage your schedule smarter.</p>
+      <div class="hero-btns">
+        <a href="/register.html?role=user" class="btn btn-outline" style="color:white;border-color:white;">Book as Customer</a>
+        <a href="/register.html?role=provider" class="btn" style="background:white;color:var(--primary);">Register as Provider</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="container">
+      <h2>Why Choose BookMe?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Instant Booking</h3>
+          <p>Browse available slots and book appointments in real-time without any back-and-forth.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📋</div>
+          <h3>Provider Dashboard</h3>
+          <p>Manage your services, set your schedule, and track all your appointments from one place.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>Secure & Reliable</h3>
+          <p>JWT-based authentication keeps your data safe. No double bookings, ever.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Works Everywhere</h3>
+          <p>Fully responsive design works on desktop, tablet, and mobile devices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section style="background: var(--white); padding: 4rem 0;">
+    <div class="container">
+      <h2 style="text-align:center; font-size:1.8rem; margin-bottom:2.5rem;">How It Works</h2>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:2rem; text-align:center;">
+        <div>
+          <div style="font-size:2.5rem; margin-bottom:0.75rem;">1️⃣</div>
+          <h3 style="margin-bottom:0.5rem;">Create Account</h3>
+          <p style="color:var(--gray); font-size:0.9rem;">Sign up as a customer or service provider in seconds.</p>
+        </div>
+        <div>
+          <div style="font-size:2.5rem; margin-bottom:0.75rem;">2️⃣</div>
+          <h3 style="margin-bottom:0.5rem;">Browse Providers</h3>
+          <p style="color:var(--gray); font-size:0.9rem;">Find providers that offer the services you need.</p>
+        </div>
+        <div>
+          <div style="font-size:2.5rem; margin-bottom:0.75rem;">3️⃣</div>
+          <h3 style="margin-bottom:0.5rem;">Pick a Slot</h3>
+          <p style="color:var(--gray); font-size:0.9rem;">Choose a date and available time slot that works for you.</p>
+        </div>
+        <div>
+          <div style="font-size:2.5rem; margin-bottom:0.75rem;">4️⃣</div>
+          <h3 style="margin-bottom:0.5rem;">Done!</h3>
+          <p style="color:var(--gray); font-size:0.9rem;">Get confirmed and track your appointment in your dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: var(--primary); color: white; padding: 3rem 0; text-align:center;">
+    <div class="container">
+      <h2 style="font-size:1.8rem; margin-bottom:1rem;">Ready to Get Started?</h2>
+      <p style="opacity:0.9; margin-bottom:1.5rem;">Join thousands of users and providers on BookMe today.</p>
+      <a href="/register.html" class="btn btn-lg" style="background:white; color:var(--primary);">Create Free Account</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2024 BookMe. Built with ❤️ using Node.js, Express & MongoDB.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    renderNavbar('home');
+  </script>
+</body>
+</html>

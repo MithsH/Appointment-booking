@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Dashboard - BookMe</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header id="navbar" class="navbar"></header>
+
+  <div class="container page-content">
+    <div class="page-header">
+      <div>
+        <h1>My Dashboard</h1>
+        <p id="welcomeMsg">Welcome back!</p>
+      </div>
+      <a href="/booking.html" class="btn btn-primary">+ Book Appointment</a>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num" id="statTotal">-</div><div class="stat-label">Total Booked</div></div>
+      <div class="stat-card"><div class="stat-num" id="statPending">-</div><div class="stat-label">Pending</div></div>
+      <div class="stat-card"><div class="stat-num" id="statApproved">-</div><div class="stat-label">Approved</div></div>
+      <div class="stat-card"><div class="stat-num" id="statCancelled">-</div><div class="stat-label">Cancelled</div></div>
+    </div>
+
+    <!-- Appointments -->
+    <div class="card">
+      <div class="card-header">
+        <h2>My Appointments</h2>
+        <div style="display:flex;gap:0.5rem;align-items:center">
+          <select id="filterStatus" class="form-control" style="width:auto" onchange="filterAppointments()">
+            <option value="">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="cancelled">Cancelled</option>
+            <option value="completed">Completed</option>
+          </select>
+          <button class="btn btn-sm btn-outline" onclick="loadAppointments()">🔄 Refresh</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div id="alert-container"></div>
+        <div id="appointmentsContainer">
+          <div class="loading"><div class="spinner"></div> Loading appointments...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/user-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - BookMe</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <h1>📅 BookMe</h1>
+        <p>Create your account</p>
+      </div>
+
+      <div id="alert-container"></div>
+
+      <form id="registerForm">
+        <div class="form-group">
+          <label class="form-label">Full Name *</label>
+          <input type="text" id="name" class="form-control" placeholder="John Doe" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email Address *</label>
+          <input type="email" id="email" class="form-control" placeholder="john@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Password * (min 6 chars)</label>
+          <input type="password" id="password" class="form-control" placeholder="••••••••" required minlength="6" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Account Type *</label>
+          <select id="role" class="form-control" required>
+            <option value="">-- Select Role --</option>
+            <option value="user">Customer (Book Appointments)</option>
+            <option value="provider">Provider (Offer Services)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" id="phone" class="form-control" placeholder="+1 234 567 8900" />
+        </div>
+
+        <div class="form-group" id="bioGroup">
+          <label class="form-label">Bio / About (for providers)</label>
+          <textarea id="bio" class="form-control" placeholder="Describe your services..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full btn-lg" id="submitBtn">
+          Create Account
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Already have an account? <a href="/login.html">Sign in here</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Pre-select role from URL param
+    const params = new URLSearchParams(window.location.search);
+    const roleParam = params.get('role');
+    if (roleParam && ['user', 'provider'].includes(roleParam)) {
+      document.getElementById('role').value = roleParam;
+    }
+
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      setLoading('submitBtn', true, 'Create Account');
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const role = document.getElementById('role').value;
+      const phone = document.getElementById('phone').value.trim();
+      const bio = document.getElementById('bio').value.trim();
+
+      if (!role) {
+        showAlert('alert-container', 'Please select an account type', 'error');
+        setLoading('submitBtn', false, 'Create Account');
+        return;
+      }
+
+      try {
+        const data = await apiFetch('/auth/register', {
+          method: 'POST',
+          body: JSON.stringify({ name, email, password, role, phone, bio })
+        });
+
+        setAuth(data.token, data.user);
+        showAlert('alert-container', 'Account created! Redirecting...', 'success');
+
+        setTimeout(() => {
+          window.location.href = data.user.role === 'provider' ? '/provider-dashboard.html' : '/user-dashboard.html';
+        }, 1000);
+      } catch (error) {
+        showAlert('alert-container', error.message, 'error');
+        setLoading('submitBtn', false, 'Create Account');
+      }
+    });
+  </script>
+</body>
+</html>
